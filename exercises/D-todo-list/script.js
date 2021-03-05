@@ -11,11 +11,8 @@ function todoList(todos) {
   });
 
   document.querySelectorAll('.todoList').forEach(item => {
-    item.addEventListener('click', (e) => {
-      if(item.classList.contains('todoList')) {
-        e.target.style.textDecoration = 'line-through';
-      
-      }
+    item.addEventListener('click', () => {
+      item.classList.toggle('line-through');
     });
   });
   

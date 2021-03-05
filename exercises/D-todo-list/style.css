@@ -38,6 +38,10 @@ body {
   border-radius: 0.15em;
 }
 
+.line-through {
+  text-decoration: line-through;
+}
+
 /* Alert */
 .alert {
   position: relative;
