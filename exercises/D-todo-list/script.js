@@ -11,11 +11,10 @@ function todoList(todos) {
   });
 
   document.querySelectorAll('.todoList').forEach(item => {
-    item.addEventListener('click', () => {
-      if (item.style.textDecoration = 'none') {
-        return item.style.textDecoration = 'line-through';
-      } else if (item.style.textDecoration = 'line-through') {
-        return item.style.textDecoration = 'none'
+    item.addEventListener('click', (e) => {
+      if(item.classList.contains('todoList')) {
+        e.target.style.textDecoration = 'line-through';
+      
       }
     });
   });
