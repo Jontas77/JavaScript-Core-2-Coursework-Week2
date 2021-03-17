@@ -5,11 +5,11 @@ const blueBtn = document.getElementById("blueBtn");
 const orangeBtn = document.getElementById("orangeBtn");
 const greenBtn = document.getElementById("greenBtn");
 
-const form = document.getElementsByTagName("form");
+const form = document.getElementById("myForm");
 const submitBtn = document.querySelector("form .btn-primary");
-const emailInput = document.getElementById("exampleInputEmail1").value;
-const nameInput = document.getElementById("example-text-input").value;
-// const textInput = document.getElementById("exampleTextarea").value;
+const emailInput = document.getElementById("exampleInputEmail1");
+const nameInput = document.getElementById("example-text-input");
+const textInput = document.getElementById("exampleTextarea");
 
 blueBtn.addEventListener("click", () => {
   jumboEl.style.backgroundColor = "#588fbd";
@@ -31,45 +31,13 @@ greenBtn.addEventListener("click", () => {
   volunteerBtn.style.backgroundColor = "#8c9c08";
 });
 
-// const validateEmail = () => {
-//   if (
-//     /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(
-//       emailInput.value
-//     )
-//   ) {
-//     return false;
-//   } else {
-//     alert("You have entered an invalid email address!");
-//     return true;
-//   }
-// };
 
-function validateForm(e) {
-  e.preventDefault();
-  let textInput = document.getElementById("exampleTextarea").value;
-
-  if(textInput == "" || textInput == null ) {
-    //document.getElementById("exampleInputEmail1").style.backgroundColor = "red";
-    //document.getElementById("example-text-input").style.backgroundColor = "red";
-    textInput.style.backgroundColor = "red";
-    alert("Name must be filled out");
-    return false;
+// Name input
+const nameSubmit = () => {
+  if(nameInput.value === '') {
+    return nameInput.classList.toggle('invalid');
+  } else {
+    return nameInput.classList.remove('invalid');
   }
 }
-
-
-// form.addEventListener("submit", (event) => {
-//   event.preventDefault();
-//   if (emailInput.value == "") {
-//     emailInput.style.backgroundColor = "red";
-//     return false;
-//   } else if (nameInput.value == "") {
-//     nameInput.style.backgroundColor = "red";
-//     return false;
-//   } else if (textInput.value == "") {
-//     textInput.style.backgroundColor = "red";
-//     return false;
-//   } else {
-//     return true;
-//   }
-// });
+nameSubmit();

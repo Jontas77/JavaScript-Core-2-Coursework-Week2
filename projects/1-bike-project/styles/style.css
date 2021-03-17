@@ -157,3 +157,9 @@ body {
 	   max-height: 80px;
 	}
 }
+
+/* Classes */
+
+.invalid {
+	background-color: red;
+}
