@@ -31,13 +31,42 @@ greenBtn.addEventListener("click", () => {
   volunteerBtn.style.backgroundColor = "#8c9c08";
 });
 
-
-// Name input
-const nameSubmit = () => {
-  if(nameInput.value === '') {
-    return nameInput.classList.toggle('invalid');
-  } else {
-    return nameInput.classList.remove('invalid');
+// Email input field
+const emailSubmit = () => {
+  let emailFormat = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  if(!emailFormat.test(emailInput.value)) {
+    emailInput.classList.add('invalid');
+    return false;
   }
 }
+emailSubmit();
+
+// Name input field
+const nameSubmit = () => {
+  if(nameInput.value == '' || nameInput.value == null) {
+    nameInput.classList.add('invalid');
+    return true;
+  } 
+}
 nameSubmit();
+
+// Text input field
+const textSubmit = () => {
+  if (textInput.value == '' || textInput.value == null) {
+    textInput.classList.add('invalid');
+    return true;
+  } 
+}
+textSubmit();
+
+const logSubmit = (event) => {
+  if(emailInput.value !== '' && !nameInput.value !== '' && textInput.value !== '') {
+  alert('Thank you for filling out the form'); 
+  return true;
+  }
+  event.preventDefault();
+  form.reset();
+}
+
+form.addEventListener('submit', logSubmit);
+
