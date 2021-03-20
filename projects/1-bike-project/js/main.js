@@ -32,41 +32,54 @@ greenBtn.addEventListener("click", () => {
 });
 
 // Email input field
-const emailSubmit = () => {
+const emailValidation = () => {
   let emailFormat = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  if(!emailFormat.test(emailInput.value)) {
-    emailInput.classList.add('invalid');
+  if (!emailFormat.test(emailInput.value)) {
+    emailInput.classList.add("invalid");
+    return false;
+  } else {
+    emailInput.classList.remove("invalid");
     return false;
   }
 }
-emailSubmit();
 
 // Name input field
-const nameSubmit = () => {
+const nameValidation = () => {
   if(nameInput.value == '' || nameInput.value == null) {
     nameInput.classList.add('invalid');
-    return true;
-  } 
+    return false;
+  } else {
+    nameInput.classList.remove('invalid');
+    return false;
+  }
 }
-nameSubmit();
 
 // Text input field
-const textSubmit = () => {
-  if (textInput.value == '' || textInput.value == null) {
-    textInput.classList.add('invalid');
-    return true;
-  } 
+const textValidation = () => {
+  if (textInput.value == "" || textInput.value == null) {
+    textInput.classList.add("invalid");
+    return false;
+  } else {
+    textInput.classList.remove("invalid");
+    return false;
+  }
 }
-textSubmit();
 
-const logSubmit = (event) => {
+// Submit
+const logSubmit = () => {
   if(emailInput.value !== '' && !nameInput.value !== '' && textInput.value !== '') {
   alert('Thank you for filling out the form'); 
-  return true;
-  }
-  event.preventDefault();
-  form.reset();
+  return false;
+  }   
 }
 
-form.addEventListener('submit', logSubmit);
+form.addEventListener('submit', (event) => {
+  event.preventDefault();
+  emailValidation();
+  nameValidation();
+  textValidation();
+  logSubmit();
+  form.reset();
+});
+
 
